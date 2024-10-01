@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Add DB
-    'PortfolioDatabase.apps.PortfoliodatabaseConfig',
+    'portfolio_app',
 ]
 
 MIDDLEWARE = [

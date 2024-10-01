@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'portfolio_app/style.css' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!--BOOTSTRAP REFERENCE
+    navbar-expand-lg: Expand when large screen, burger view when not
+    navbar-dark: make content like text light to contrast dark background
+    bg-dark: make background dark
+    container-fluid: make container 100% wideth of screen, not fixed
+    navbar-toggler: humburger menu
+    navbar0toggler-icon: the incon the buger will be
+    data-bs-toggle: content that will be collapse in the navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'portfolio_app:home' %}">Bradon Barfuss Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar_Home">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar_Home">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'portfolio_app:home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'portfolio_app:portfolio' %}">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'portfolio_app:hobbies' %}">Hobbies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'portfolio_app:contact' %}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block body %}
+    {% endblock %}
+
+    <footer class="footer bg-dark text-light mt-5">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>About Me</h5>
+                    <p>
+                        Hi! I'm Bradon Barfuss, a passionate software developer with experience in full-stack development, machine learning, Object-Oriented Programming, and cloud-based 
+                        development. Strong background in collaborative team environments, coding, testing, and deployment 
+                        across various platforms using SDLC. 
+                    </p>
+                </div>
+                    <div class="col-md-2">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'portfolio_app:portfolio' %}" >Projects</a></li>
+                        <li><a href="{% url 'portfolio_app:contact' %}" >Contact</a></li>
+                        <li><a href="{% url 'portfolio_app:hobbies' %}" >Hobbies</a></li>
+                    </ul>
+                </div>
+                    <div class="col-md-2">
+                    <h5>Connect with Me</h5>
+                    <a href="https://github.com/Bradon-Barfuss" class="text-light me-2" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/bradonbarfuss" class="text-light" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>&copy; 2024 Bradon Barfuss - All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
