@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Portfolio
 from .models import Hobbies
+from .models import Contact
+from .forms import ContactForm
 from django.template import loader
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -50,7 +53,7 @@ def portfolio(request):
     context = {'item_list': item_list, }
     return render(request, 'portfolio_app/portfolio.html', context)
 
-
+@login_required
 def contact(request):
     """Return Contact Email
 
@@ -60,7 +63,11 @@ def contact(request):
     Returns:
         Http response of Bradons email.
     """
-    return render(request, 'portfolio_app/contact.html')
+    contact_item = Contact.objects.all()
+    context = {'contact_item': contact_item, }
+
+
+    return render(request, 'portfolio_app/contact.html', context)
 
 
 def projectShowcase(request, portfolio_id):
@@ -101,3 +108,36 @@ def hobbyShowcase(request, hobby_id):
 
     context = {'hobby_item': hobby_item,}
     return render(request, 'portfolio_app/hobbyShowcase.html', context)
+
+
+
+
+
+def create_contact(request):
+    form = ContactForm(request.POST or None)
+
+    if(form.is_valid()):
+        form.save()
+        return redirect('../')
+    
+    return render(request, 'portfolio_app/contact-form.html', {'form': form})
+
+
+
+def update_contact(request, contact_id):
+    contact_item = Contact.objects.get(id=contact_id)
+
+    form = ContactForm(request.POST or None, instance=contact_item)
+
+    if form.is_valid():
+        form.save()
+        return redirect('../')
+    
+    return render(request, 'portfolio_app/contact-form.html', {'form': form, 'contact_item': contact_item})
+
+
+
+def delete_contact(request, contact_id):
+    contact_item = Contact.objects.get(id=contact_id)
+    contact_item.delete()
+    return redirect('../contact')

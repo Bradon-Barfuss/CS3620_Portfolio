@@ -24,3 +24,12 @@ class Hobbies(models.Model):
     hobby_name = models.CharField(max_length=255)
     hobby_desc = models.CharField(max_length=1000)
     hobby_image = models.CharField(max_length=500, default="https://raw.githubusercontent.com/Bradon-Barfuss/C-Sharp-Programs/main/Invoice%20System/InvoiceMainMenuPicture.png")
+
+
+class Contact(models.Model):
+    def __str__(self):
+        return "contact_name: " + self.contact_name + " || contact_email: " +  self.contact_email + "<br>"
+    
+    contact_name = models.CharField(max_length=255)
+    contact_email = models.CharField(max_length=255)
+    contact_message = models.CharField(max_length=1000, blank=True, null=True)

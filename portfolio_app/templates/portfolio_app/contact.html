@@ -1,7 +1,17 @@
 {% extends 'portfolio_app/base.html' %}
 
 {% block body %}
-
-bradonbarfuss@mail.weber.edu
-
-{% endblock %}
+<div class="container mt-5">
+    <div class="row">
+        {% for contact in contact_item %}
+        <div class="project-card">
+            <div class="col-md-4">
+                <h3>{{contact.contact_name}} {{contact.contact_email}} {{contact.contact_message}}</h3>
+                <h4><b>Add Contact: </b><a href="{% url 'portfolio_app:create_contact'  %}">Create Contact</a></h4>
+                <h4><b>Update Contact: </b><a href="{% url 'portfolio_app:update_contact' contact.id %}">Update Contact</a></h4>
+                <h4><b>Description: </b><a href="{% url 'portfolio_app:delete_contact' contact.id %}">delete Contact</a></h4>
+            </div>
+            
+        </div>{% endfor %}
+    </div>
+</div>{% endblock %}
