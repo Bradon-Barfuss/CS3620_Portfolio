@@ -1,0 +1,43 @@
+body {
+    background-color: #1E1E1E !important;
+    color: #E0E0E0 !important; 
+    font-family: 'Roboto', sans-serif; 
+}
+
+.navbar, .footer {
+    background-color: #1E1E1E; 
+    border-bottom: 2px solid #4CAF50; 
+}
+
+.navbar a, .footer a {
+    color: #E0E0E0; 
+}
+
+.footer {
+    background-color: #1E1E1E; 
+    border-top: 2px solid #4CAF50; 
+    color: #E0E0E0; 
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #388E3C; 
+}
+
+.footer h5 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.footer p {
+    margin-bottom: 0;
+    color: #c7c7c7;
+}
+
+.footer .list-unstyled li {
+    margin-bottom: 6px;
+}

@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Portfolio
-from .models import Hobbies
+from .models import Project
 from .models import Contact
 from .forms import ContactForm
 from django.template import loader
@@ -26,22 +25,8 @@ def home(request):
     return render(request, 'portfolio_app/index.html', context)
 
 
-def hobbies(request):
-    """Display All Hobbies
-
-    Args:
-        request: The http request object
-
-    Returns:
-        rendered http object using templates displaying infomation about bradon hobbies.
-    """
-    item_list = Hobbies.objects.all()
-    context = {'item_list': item_list, }
-    return render(request, 'portfolio_app/hobbies.html', context)
-
-
-def portfolio(request):
-    """ Display Portfolio Items
+def Project(request):
+    """ Display Project Items
 
     Args:
         request: The http request object
@@ -49,9 +34,9 @@ def portfolio(request):
     Returns:
         rendered http object using templates displaying infomation about bradon coding projects.
     """
-    item_list = Portfolio.objects.all()
+    item_list = Project.objects.all()
     context = {'item_list': item_list, }
-    return render(request, 'portfolio_app/portfolio.html', context)
+    return render(request, 'portfolio_app/Project.html', context)
 
 @login_required
 def contact(request):
@@ -93,21 +78,6 @@ def projectShowcase(request, portfolio_id):
                }
     return render(request, 'portfolio_app/projectShowcase.html', context)
 
-def hobbyShowcase(request, hobby_id):
-    """Show case a single hobby from portfolio
-
-    Args:
-        request: Http request object
-        hobby_id: The ID (Primary Key) of the displayed portfolio project
-
-    Returns:
-        A http request using render, using a template to only display one portfolio hobby
-    """
-
-    hobby_item = Hobbies.objects.get(pk=hobby_id)
-
-    context = {'hobby_item': hobby_item,}
-    return render(request, 'portfolio_app/hobbyShowcase.html', context)
 
 
 
